@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://ai-powered-skill-gap-analysis-rsnj.onrender.com/api/:path*"
+    }
+  ]
+}

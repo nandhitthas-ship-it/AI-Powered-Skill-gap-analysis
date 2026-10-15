@@ -126,8 +126,7 @@ app.config.update(
     MAX_CONTENT_LENGTH=5 * 1024 * 1024,
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=False,
-)
+    SESSION_COOKIE_SECURE=os.environ.get("SKILLPATH_SECURE_COOKIES") == "1",)
 
 
 def get_db():
@@ -573,4 +572,5 @@ initialize_database()
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=os.environ.get("FLASK_DEBUG") == "1")
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="127.0.0.1", port=port, debug=os.environ.get("FLASK_DEBUG") == "1")
